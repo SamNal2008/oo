@@ -28,6 +28,7 @@ public class UI
     public int sampleMethod(int y)
     {
         // Insérez votre code ici
-        return x + y;
+        System.out.println("Hello EVAN");
+        return 0;
     }
 }
