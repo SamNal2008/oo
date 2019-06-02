@@ -29,6 +29,8 @@ public class UI
     {
         // Insérez votre code ici
         System.out.println("Hello EVAN");
+        System.out.println("bien le bonjour a toi samsung");
+        
         return 0;
     }
 }
