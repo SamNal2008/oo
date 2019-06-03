@@ -16,7 +16,7 @@ public class Training
     private int maxPartCount;
     private Time time;
     private String venue;
-    private ArrayList<Employee> part;
+    public ArrayList<Employee> part;
     private Scanner scan = new Scanner(System.in);
     private String trainerDetail;
 
@@ -32,6 +32,7 @@ public class Training
         venue = cvenue;
         part = new ArrayList<Employee>();
         trainerDetail = ctrainerDetail;
+        setDate();
     }
     
     
@@ -54,11 +55,11 @@ public class Training
         Date date = new Date();
         System.out.println("Which year your training will take place ?");
         int year = scan.nextInt();
-        date.setYear(year);
+        date.setYear(year-1);
         
         System.out.println("Which month your training will take place ?");
         int month = scan.nextInt();
-        date.setMonth(month);
+        date.setMonth(month-1);
         
         System.out.println("Which day your training will take place ?");
         int day = scan.nextInt();
@@ -140,6 +141,29 @@ public class Training
             return false;
         }
     }
+    
+    public boolean removePart()
+    {
+        System.out.println("Enter the name of the employee that you want to remove : ");
+        String participant = scan.nextLine();
+        int i = 0;
+        /*Date today = new Date();
+        today = Calendar.getInstance().getTime();
+        if(this.date)*/
+        while(i<this.getNumberOfPart())
+        {
+            if(participant.equals(this.part.get(i).getEName()))
+            {
+                this.part.remove(this.part.get(i));
+                System.out.println("The Employee has been deleted");
+                return true;
+            }
+            i++;
+            
+        }
+        System.out.println("Sorry the employee has not been found");
+        return false;
+    }
     public boolean setTrainerDetail(String trainerDetail)
     {
         if(trainerDetail.length()>3)
@@ -159,6 +183,12 @@ public class Training
         System.out.println("What is the employee number that you want to remove from this training ?");
         String employeeToRemove = scan.nextLine();
         int i=0;
+        if(this.part.size()==0)
+        {
+            System.out.println("There is no participant in this training");
+            return false;
+        }
+        
         while(i<this.part.size())
         {
             if(!(employeeToRemove==this.part.get(i).getEmployeeNumber()))

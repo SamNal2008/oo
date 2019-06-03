@@ -9,7 +9,7 @@ import java.sql.Time;
 public class MasterList
 {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    private ArrayList<Training> trainList;
+    public ArrayList<Training> trainList;
     private Scanner scan = new Scanner(System.in);
     /**
      * Constructeur d'objets de classe MasterList
@@ -50,19 +50,15 @@ public class MasterList
         int i=0;
         while(i<this.trainList.size())
         {
-            System.out.println("1");
-            if(nameToRemove==trainList.get(i).getTName())
+            if(nameToRemove.equals(this.trainList.get(i).getTName()))
             {
-                System.out.println(trainList.get(i).getTName());
-                if(trainList.get(i).getNumberOfPart()==0)
+                if(this.trainList.get(i).getNumberOfPart()==0)
                 {
-                    System.out.println("3");
                     this.trainList.remove(this.trainList.get(i));
                     return true;
                 }
                 else
                 {
-                    System.out.println("4");
                     System.out.println("Sorry but you can not delete a training which has participants");
                     return false;
                 }
@@ -80,7 +76,7 @@ public class MasterList
         today = Calendar.getInstance().getTime();
         for(int i = 0;i<this.trainList.size();i++)
         {
-            if(today.after(this.trainList.get(i).getDate()))
+            if(today.before(this.trainList.get(i).getDate()))
             {
                 upcomingList.add(this.trainList.get(i));
             }
@@ -95,7 +91,7 @@ public class MasterList
         today = Calendar.getInstance().getTime();
         for(int i = 0;i<this.trainList.size();i++)
         {
-            if(today.before(this.trainList.get(i).getDate()))
+            if(today.after(this.trainList.get(i).getDate()))
             {
                 pastList.add(this.trainList.get(i));
             }
@@ -105,12 +101,12 @@ public class MasterList
     
     public Training searchTraining()
     {
-        System.out.println("What is the name of the training that you want to research");
+        System.out.println("What is the name of the training that you are looking for");
         String nameToSearch = scan.nextLine();
         int i =0;
         while(i<this.trainList.size())
         {
-            if(nameToSearch==this.trainList.get(i).getTName())
+            if(nameToSearch.equals(this.trainList.get(i).getTName()))
             {
                 return this.trainList.get(i);
             }
