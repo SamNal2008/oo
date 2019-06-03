@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.*;
 import java.sql.Time;
 import java.text.*;
 /**
@@ -179,10 +180,13 @@ public class Training
     }
     public Date getDate()
     {
+
         SimpleDateFormat ft = 
       new SimpleDateFormat ("E yyyy.MM.dd ");
-        System.out.println(ft.format(this.date));
+        //System.out.println(ft.format(this.date));
+
         return this.date;
+
     }
     public int getMaxPartCount()
     {

@@ -50,20 +50,23 @@ public class MasterList
         int i=0;
         while(i<this.trainList.size())
         {
-            if(!(nameToRemove==trainList.get(i).getTName()))
+            System.out.println("1");
+            if(nameToRemove==trainList.get(i).getTName())
             {
+                System.out.println(trainList.get(i).getTName());
                 if(trainList.get(i).getNumberOfPart()==0)
                 {
-                this.trainList.remove(this.trainList.get(i));
-                return true;
+                    System.out.println("3");
+                    this.trainList.remove(this.trainList.get(i));
+                    return true;
                 }
-            
-            else
-            {
-                System.out.println("Sorry but you can not delete a training which has participants");
-                return false;
+                else
+                {
+                    System.out.println("4");
+                    System.out.println("Sorry but you can not delete a training which has participants");
+                    return false;
+                }
             }
-        }
             i++;
         }
         System.out.println("Sorry we did not find your training in the traininig list maybe it does not exist");
@@ -107,24 +110,42 @@ public class MasterList
         int i =0;
         while(i<this.trainList.size())
         {
-            if(!(nameToSearch==this.trainList.get(i).getTName()))
+            if(nameToSearch==this.trainList.get(i).getTName())
             {
                 return this.trainList.get(i);
             }
             i++;
         }
         System.out.println("Sorry this training doesn't exist");
-        return null;
+        return this.trainList.get(0);
+    }
+    
+    private String clac_string(String ok)
+    {
+        String ret = ok;
+        while(ret.length() < 28)
+        {
+            ret = ret + " ";
+        }
+        return ret;
     }
     
     public void print_training(ArrayList<Training> List)
     {
         
-        System.out.println("Name                |Date                |Venue               |Trainer Details     |Max participants    |Duration            |Total participants");
-        System.out.println("--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|");
+        System.out.println("Name                        |Date                        |Venue                       |Trainer Details             |Max participants            |Duration                    |Total participants");
+        System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------|");
         for(int i = 0; i < List.size(); i++)
         {
-            System.out.println(List.get(i).getTName());
+
+            System.out.print(clac_string(List.get(i).getTName()));
+            System.out.print("|"+List.get(i).getDate());
+            System.out.print("|"+clac_string(List.get(i).getVenue()));
+            System.out.print("|"+clac_string(List.get(i).getTrainerDetail()));
+            System.out.print("|"+clac_string(Integer.toString(List.get(i).getMaxPartCount())));
+            System.out.print("|"+List.get(i).getTime()+ "                    ");
+            System.out.println("|"+clac_string(Integer.toString(List.get(i).getNumberOfPart())));
+            System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------|");
         }
     }
 }
