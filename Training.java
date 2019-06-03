@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.*;
 import java.sql.Time;
 /**
  * Décrivez votre classe Training ici.
@@ -160,7 +161,10 @@ public class Training
     }
     public Date getDate()
     {
+        SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd ");
+        ft.format(this.date);
         return this.date;
+
     }
     public int getMaxPartCount()
     {
