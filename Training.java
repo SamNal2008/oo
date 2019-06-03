@@ -21,16 +21,15 @@ public class Training
     /**
      * Constructeur d'objets de classe Training
      */
-    public Training()
+    public Training(String cTname,int cmaxPartCount, String cvenue,String ctrainerDetail)
     {
-        // initialisation des variables d'instance
-        tName = null;
+        tName = cTname;
         date =  new Date(2019,6,2);
-        maxPartCount = 0;
+        maxPartCount = cmaxPartCount;
         time = new Time(0,0,0);
-        venue = null;
+        venue = cvenue;
         part = new ArrayList<Employee>();
-        trainerDetail = null;
+        trainerDetail = ctrainerDetail;
     }
     
     
@@ -125,7 +124,11 @@ public class Training
     {
         if(this.part.size()<this.maxPartCount)
         {
-            Employee employee = new Employee();
+            System.out.println("What is the name of the employee that you want to add ?");
+            String cename = scan.nextLine();
+            System.out.println("What is the departement of your employee ?");
+            String cdepartement = scan.nextLine();
+            Employee employee = new Employee(cename,cdepartement);
             this.part.add(employee);
             return true;
         }
@@ -148,6 +151,8 @@ public class Training
             return false;
         }
     }
+    
+    
     //get Part
     public String getTName()
     {
