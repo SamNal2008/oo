@@ -1,5 +1,6 @@
 import java.util.*;
 import java.sql.Time;
+import java.text.*;
 /**
  * Décrivez votre classe Training ici.
  *
@@ -24,7 +25,7 @@ public class Training
     public Training(String cTname,int cmaxPartCount, String cvenue,String ctrainerDetail)
     {
         tName = cTname;
-        date =  new Date(2019,6,2);
+        date =  new Date(2019,6,5);
         maxPartCount = cmaxPartCount;
         time = new Time(0,0,0);
         venue = cvenue;
@@ -152,6 +153,24 @@ public class Training
         }
     }
     
+    public boolean removePartFromTraining()
+    {
+        System.out.println("What is the employee number that you want to remove from this training ?");
+        String employeeToRemove = scan.nextLine();
+        int i=0;
+        while(i<this.part.size())
+        {
+            if(!(employeeToRemove==this.part.get(i).getEmployeeNumber()))
+            {
+                this.part.remove(this.part.get(i));
+                System.out.println(employeeToRemove + "has been removed from the training");
+                return true;
+            }
+                i++;
+         }
+          System.out.println("Sorry we did not find this employee in the training");
+          return false;
+    }
     
     //get Part
     public String getTName()
@@ -160,6 +179,9 @@ public class Training
     }
     public Date getDate()
     {
+        SimpleDateFormat ft = 
+      new SimpleDateFormat ("E yyyy.MM.dd ");
+        System.out.println(ft.format(this.date));
         return this.date;
     }
     public int getMaxPartCount()

@@ -14,6 +14,7 @@ public class Employee
     {
        // initialisation des variables d'instance
        employeeNumber = UUID.randomUUID().toString();
+       System.out.println(this.employeeNumber);
        eName = ceName;
        departement = cDepartement;
     }

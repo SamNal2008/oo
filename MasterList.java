@@ -57,12 +57,13 @@ public class MasterList
                 this.trainList.remove(this.trainList.get(i));
                 return true;
                 }
-            }
+            
             else
             {
                 System.out.println("Sorry but you can not delete a training which has participants");
                 return false;
             }
+        }
             i++;
         }
         System.out.println("Sorry we did not find your training in the traininig list maybe it does not exist");
@@ -114,5 +115,16 @@ public class MasterList
         }
         System.out.println("Sorry this training doesn't exist");
         return null;
+    }
+    
+    public void print_training(ArrayList<Training> List)
+    {
+        
+        System.out.println("Name                |Date                |Venue               |Trainer Details     |Max participants    |Duration            |Total participants");
+        System.out.println("--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|");
+        for(int i = 0; i < List.size(); i++)
+        {
+            System.out.println(List.get(i).getTName());
+        }
     }
 }
