@@ -24,7 +24,7 @@ public class Training
     public Training(String cTname,int cmaxPartCount, String cvenue,String ctrainerDetail)
     {
         tName = cTname;
-        date =  new Date(2019,6,2);
+        date =  new Date(2019,6,5);
         maxPartCount = cmaxPartCount;
         time = new Time(0,0,0);
         venue = cvenue;
