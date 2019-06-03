@@ -10,20 +10,27 @@ public class MasterList
 {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
     private ArrayList<Training> trainList;
-
+    private Scanner scan = new Scanner(System.in);
     /**
      * Constructeur d'objets de classe MasterList
      */
     public MasterList()
     {
-        // initialisation des variables d'instance
         trainList = new ArrayList<Training>();
     }
 
-  
     public boolean addTraining()
     {
-        Training training = new Training();
+        System.out.println("Please enter the name of the training that you want to add");
+        String cname = scan.nextLine();
+        System.out.println("Please enter the maximum number of participants");
+        int cmaxPartCount = scan.nextInt();
+        System.out.println("Please enter the venue of the training");
+        scan.nextLine();
+        String cvenue = scan.nextLine();
+        System.out.println("Please enter the trainer details");
+        String cTrainerDetail = scan.nextLine();
+        Training training = new Training(cname,cmaxPartCount,cvenue,cTrainerDetail);
         if(!(training.getTName()==null))//retournera null de toutes facons vu qu'on ne l'initialise pas
         {
             this.trainList.add(training);
@@ -38,24 +45,24 @@ public class MasterList
     
     public boolean removeTraining()
     {
-        Training training = new Training();
+        System.out.println("What is the name of the training that you want to remove");
+        String nameToRemove = scan.nextLine();
         int i=0;
         while(i<this.trainList.size())
         {
-            if(training.getTName()==trainList.get(i).getTName())
+            if(!(nameToRemove==trainList.get(i).getTName()))
             {
                 if(trainList.get(i).getNumberOfPart()==0)
                 {
                 this.trainList.remove(this.trainList.get(i));
                 return true;
+                }
             }
             else
             {
                 System.out.println("Sorry but you can not delete a training which has participants");
                 return false;
             }
-        }
-                
             i++;
         }
         System.out.println("Sorry we did not find your training in the traininig list maybe it does not exist");
@@ -94,11 +101,12 @@ public class MasterList
     
     public Training searchTraining()
     {
-        Training training = new Training();
+        System.out.println("What is the name of the training that you want to research");
+        String nameToSearch = scan.nextLine();
         int i =0;
         while(i<this.trainList.size())
         {
-            if(training==this.trainList.get(i))
+            if(!(nameToSearch==this.trainList.get(i).getTName()))
             {
                 return this.trainList.get(i);
             }
