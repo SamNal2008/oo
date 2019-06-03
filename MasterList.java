@@ -9,7 +9,7 @@ import java.sql.Time;
 public class MasterList
 {
     // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    private ArrayList<Training> trainList;
+    public ArrayList<Training> trainList;
     private Scanner scan = new Scanner(System.in);
     /**
      * Constructeur d'objets de classe MasterList
@@ -50,18 +50,22 @@ public class MasterList
         int i=0;
         while(i<this.trainList.size())
         {
-            if(!(nameToRemove==trainList.get(i).getTName()))
+            System.out.println(this.trainList.get(i).getTName());
+            System.out.println(nameToRemove);
+            if(nameToRemove.equals(this.trainList.get(i).getTName()))
             {
-                if(trainList.get(i).getNumberOfPart()==0)
+                System.out.println(this.trainList.get(i).getNumberOfPart());
+                if(this.trainList.get(i).getNumberOfPart()==0)
                 {
-                this.trainList.remove(this.trainList.get(i));
-                return true;
+                    this.trainList.remove(this.trainList.get(i));
+                    return true;
                 }
-            }
-            else
-            {
-                System.out.println("Sorry but you can not delete a training which has participants");
-                return false;
+            
+                else
+                {
+                    System.out.println("Sorry but you can not delete a training which has participants");
+                    return false;
+                }
             }
             i++;
         }
@@ -106,7 +110,7 @@ public class MasterList
         int i =0;
         while(i<this.trainList.size())
         {
-            if(!(nameToSearch==this.trainList.get(i).getTName()))
+            if(nameToSearch.equals(this.trainList.get(i).getTName()))
             {
                 return this.trainList.get(i);
             }
