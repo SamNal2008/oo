@@ -107,4 +107,15 @@ public class MasterList
         System.out.println("Sorry this training doesn't exist");
         return null;
     }
+    
+    public void print_training(ArrayList<Training> List)
+    {
+        
+        System.out.println("Name                |Date                |Venue               |Trainer Details     |Max participants    |Duration            |Total participants");
+        System.out.println("--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|");
+        for(int i = 0; i < List.size()-1; i++)
+        {
+            System.out.println(List.get(i).getTName());
+        }
+    }
 }
