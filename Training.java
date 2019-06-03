@@ -16,6 +16,7 @@ public class Training
     private String venue;
     private ArrayList<Employee> part;
     private Scanner scan = new Scanner(System.in);
+    private String trainerDetail;
 
     /**
      * Constructeur d'objets de classe Training
@@ -29,6 +30,7 @@ public class Training
         time = new Time(0,0,0);
         venue = null;
         part = new ArrayList<Employee>();
+        trainerDetail = null;
     }
     
     
@@ -133,10 +135,19 @@ public class Training
             return false;
         }
     }
-    
-    
-    
-    
+    public boolean setTrainerDetail(String trainerDetail)
+    {
+        if(trainerDetail.length()>3)
+        {
+            this.trainerDetail = trainerDetail;
+            return true;
+        }
+        else
+        {
+            System.out.println("Your trainer details are not correct");
+            return false;
+        }
+    }
     //get Part
     public String getTName()
     {
@@ -161,6 +172,14 @@ public class Training
     public ArrayList<Employee> getPartOfTraining()
     {
         return this.part;
+    }
+    public int getNumberOfPart()
+    {
+        return this.part.size();
+    }
+    public String getTrainerDetail()
+    {
+        return this.trainerDetail;
     }
     
     

@@ -24,7 +24,7 @@ public class MasterList
     public boolean addTraining()
     {
         Training training = new Training();
-        if(!(training.getTName()==null))
+        if(!(training.getTName()==null))//retournera null de toutes facons vu qu'on ne l'initialise pas
         {
             this.trainList.add(training);
             return true;
@@ -44,11 +44,21 @@ public class MasterList
         {
             if(training.getTName()==trainList.get(i).getTName())
             {
+                if(trainList.get(i).getNumberOfPart()==0)
+                {
                 this.trainList.remove(this.trainList.get(i));
                 return true;
             }
+            else
+            {
+                System.out.println("Sorry but you can not delete a training which has participants");
+                return false;
+            }
+        }
+                
             i++;
         }
+        System.out.println("Sorry we did not find your training in the traininig list maybe it does not exist");
         return false;
     }
     
