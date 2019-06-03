@@ -30,6 +30,8 @@ public class UI
         // Insérez votre code ici
         System.out.println("Hello EVAN");
         System.out.println("bien le bonjour a toi samsung");
+        Employee e1 = new Employee();
+        System.out.println(e1.decrisToi()+"\n");
         
         return 0;
     }

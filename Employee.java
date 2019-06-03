@@ -84,6 +84,10 @@ public class Employee
         return this.departement;
     }
     
+    public String decrisToi(){
+        return this.eName+" is an Employer is Id is "+this.employeeNumber+ ", and is department is "+this.departement+" departement";
+    }
+    
     
     
 }
