@@ -1,5 +1,6 @@
 import java.util.*;
 import java.sql.Time;
+import java.io.*;
 /**
  * Décrivez votre classe MasterList ici.
  *
@@ -128,7 +129,6 @@ public class MasterList
     
     public void print_training(ArrayList<Training> List)
     {
-        
         System.out.println("Name                        |Date                        |Venue                       |Trainer Details             |Max participants            |Duration                    |Total participants");
         System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------|");
         for(int i = 0; i < List.size(); i++)

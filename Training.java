@@ -26,7 +26,7 @@ public class Training
     public Training(String cTname,int cmaxPartCount, String cvenue,String ctrainerDetail)
     {
         tName = cTname;
-        date =  new Date(2019,6,5);
+        date =  null;
         maxPartCount = cmaxPartCount;
         time = new Time(0,0,0);
         venue = cvenue;
@@ -52,21 +52,20 @@ public class Training
     }
     public boolean setDate()
     {
-        Date date = new Date();
         System.out.println("Which year your training will take place ?");
         int year = scan.nextInt();
-        date.setYear(year-1);
+        
         
         System.out.println("Which month your training will take place ?");
         int month = scan.nextInt();
-        date.setMonth(month-1);
+        
         
         System.out.println("Which day your training will take place ?");
         int day = scan.nextInt();
-        date.setDate(day);
-        
+        Date date = new Date(year-1900,month-1,day);
+        System.out.println(date.toString());
         System.out.println(Calendar.getInstance().getTime());
-        if(date.before(Calendar.getInstance().getTime()))
+        if(date.after(Calendar.getInstance().getTime()))
         {
             this.date = date;
             return true;
@@ -74,6 +73,7 @@ public class Training
         else
         {
             System.out.println("The date you entered is already past");
+            this.date= date;
             return false;
         }
     }
@@ -92,13 +92,16 @@ public class Training
     }
     public boolean setTime()
     {
+        System.out.println("How many days your training will take ?");
+        int days = scan.nextInt();
+        
         System.out.println("How many hours your training will take ?");
         int hours = scan.nextInt();
         
         System.out.println("How many minutes your training will take ?");
         int minute = scan.nextInt();
         
-        Time time = new Time(hours*3600000 + minute * 60);
+        Time time = new Time(days*86400000+hours*3600000 + minute * 60);
         if(time.getHours()>0)
         {
             this.time = time;
@@ -164,6 +167,7 @@ public class Training
         System.out.println("Sorry the employee has not been found");
         return false;
     }
+    
     public boolean setTrainerDetail(String trainerDetail)
     {
         if(trainerDetail.length()>3)
