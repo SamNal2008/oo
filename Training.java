@@ -33,6 +33,7 @@ public class Training
         part = new ArrayList<Employee>();
         trainerDetail = ctrainerDetail;
         setDate();
+        setTime();
     }
     
     
@@ -52,21 +53,29 @@ public class Training
     }
     public boolean setDate()
     {
-        Date date = new Date();
         System.out.println("Which year your training will take place ?");
         int year = scan.nextInt();
-        date.setYear(year-1);
         
         System.out.println("Which month your training will take place ?");
         int month = scan.nextInt();
-        date.setMonth(month-1);
         
         System.out.println("Which day your training will take place ?");
         int day = scan.nextInt();
-        date.setDate(day);
         
-        System.out.println(Calendar.getInstance().getTime());
-        if(date.before(Calendar.getInstance().getTime()))
+        Date date = new Date(year,month,day);
+        Date date2 = new Date(2019,6,4);
+        
+        // tests if date 2 is before date and print
+        boolean before = date2.before(date);
+        System.out.println("Date 2 is before date: " + before);
+        
+        // tests if date is before date 2 and print
+        before = date.before(date2);
+        System.out.println("Date is before date 2: " + before);
+
+        
+        System.out.println(date2);
+        if(date.after(date2))
         {
             this.date = date;
             return true;
@@ -98,8 +107,8 @@ public class Training
         System.out.println("How many minutes your training will take ?");
         int minute = scan.nextInt();
         
-        Time time = new Time(hours*3600000 + minute * 60);
-        if(time.getHours()>0)
+        Time time = new Time(hours,minute,0);
+        if(hours!=0)
         {
             this.time = time;
             return true;
