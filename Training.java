@@ -14,7 +14,7 @@ public class Training
     private String tName;
     private Date date;
     private int maxPartCount;
-    private Time time;
+    private String time;
     private String venue;
     public ArrayList<Employee> part;
     private Scanner scan = new Scanner(System.in);
@@ -26,9 +26,8 @@ public class Training
     public Training(String cTname,int cmaxPartCount, String cvenue,String ctrainerDetail)
     {
         tName = cTname;
-        date =  new Date(2019,6,5);
+        date =  null;
         maxPartCount = cmaxPartCount;
-        time = new Time(0,0,0);
         venue = cvenue;
         part = new ArrayList<Employee>();
         trainerDetail = ctrainerDetail;
@@ -55,27 +54,19 @@ public class Training
     {
         System.out.println("Which year your training will take place ?");
         int year = scan.nextInt();
-        
+
         System.out.println("Which month your training will take place ?");
         int month = scan.nextInt();
+
         
         System.out.println("Which day your training will take place ?");
         int day = scan.nextInt();
-        
-        Date date = new Date(year,month,day);
-        Date date2 = new Date(2019,6,4);
-        
-        // tests if date 2 is before date and print
-        boolean before = date2.before(date);
-        System.out.println("Date 2 is before date: " + before);
-        
-        // tests if date is before date 2 and print
-        before = date.before(date2);
-        System.out.println("Date is before date 2: " + before);
+        scan.nextLine();
 
-        
-        System.out.println(date2);
-        if(date.after(date2))
+        Date date = new Date(year-1900,month-1,day);
+
+        if(date.after(Calendar.getInstance().getTime()))
+
         {
             this.date = date;
             return true;
@@ -83,6 +74,7 @@ public class Training
         else
         {
             System.out.println("The date you entered is already past");
+            this.date= date;
             return false;
         }
     }
@@ -101,14 +93,17 @@ public class Training
     }
     public boolean setTime()
     {
+        System.out.println("How many days your training will take ?");
+        String days = scan.nextLine();
+        
         System.out.println("How many hours your training will take ?");
-        int hours = scan.nextInt();
+        String hours = scan.nextLine();
         
-        System.out.println("How many minutes your training will take ?");
-        int minute = scan.nextInt();
         
-        Time time = new Time(hours,minute,0);
-        if(hours!=0)
+        String time = days + " day(s) " + hours + " hour(s)" ;
+
+        if(hours!=null)
+
         {
             this.time = time;
             return true;
@@ -116,7 +111,7 @@ public class Training
         else
         {
             System.out.println("Your training time should be more than one hour");
-            return false;
+            return setTime();
         }
     }
     public boolean setVenue(String venue)
@@ -173,6 +168,7 @@ public class Training
         System.out.println("Sorry the employee has not been found");
         return false;
     }
+    
     public boolean setTrainerDetail(String trainerDetail)
     {
         if(trainerDetail.length()>3)
@@ -231,7 +227,7 @@ public class Training
     {
         return this.maxPartCount;
     }
-    public Time getTime()
+    public String getTime()
     {
         return this.time;
     }

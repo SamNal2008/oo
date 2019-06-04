@@ -1,5 +1,6 @@
 import java.util.*;
 import java.sql.Time;
+import java.io.*;
 /**
  * Décrivez votre classe MasterList ici.
  *
@@ -113,7 +114,7 @@ public class MasterList
             i++;
         }
         System.out.println("Sorry this training doesn't exist");
-        return this.trainList.get(0);
+        return null;
     }
     
     private String clac_string(String ok)
@@ -126,9 +127,8 @@ public class MasterList
         return ret;
     }
     
-    public void print_training(ArrayList<Training> List)
+    public void print_training(ArrayList<Training> List/*boolean upcoming*/)
     {
-        
         System.out.println("Name                        |Date                        |Venue                       |Trainer Details             |Max participants            |Duration                    |Total participants");
         System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------|");
         for(int i = 0; i < List.size(); i++)
@@ -139,7 +139,7 @@ public class MasterList
             System.out.print("|"+clac_string(List.get(i).getVenue()));
             System.out.print("|"+clac_string(List.get(i).getTrainerDetail()));
             System.out.print("|"+clac_string(Integer.toString(List.get(i).getMaxPartCount())));
-            System.out.print("|"+List.get(i).getTime()+ "                    ");
+            System.out.print("|"+clac_string(List.get(i).getTime()));
             System.out.println("|"+clac_string(Integer.toString(List.get(i).getNumberOfPart())));
             System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------|");
         }
