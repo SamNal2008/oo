@@ -2,13 +2,13 @@
 dependency1.from=Training
 dependency1.to=Employee
 dependency1.type=UsesDependency
-dependency2.from=MasterList
-dependency2.to=Training
+dependency2.from=UI
+dependency2.to=MasterList
 dependency2.type=UsesDependency
 dependency3.from=UI
-dependency3.to=MasterList
+dependency3.to=Training
 dependency3.type=UsesDependency
-dependency4.from=UI
+dependency4.from=MasterList
 dependency4.to=Training
 dependency4.type=UsesDependency
 editor.fx.0.height=848

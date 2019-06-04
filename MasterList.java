@@ -127,10 +127,20 @@ public class MasterList
         return ret;
     }
     
-    public void print_training(ArrayList<Training> List/*boolean upcoming*/)
+    public void print_training(ArrayList<Training> List,boolean upcoming)
     {
-        System.out.println("Name                        |Date                        |Venue                       |Trainer Details             |Max participants            |Duration                    |Total participants");
-        System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------|");
+        String last = "";
+        if(upcoming)
+        {
+            last = "registrations";
+            
+        }
+        else
+        {
+            last = "Total participants";
+        }
+        System.out.println("Name                        |Date                        |Venue                       |Trainer Details             |Max participants            |Duration                    |"+clac_string(last)+"|");
+        System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|");
         for(int i = 0; i < List.size(); i++)
         {
 
@@ -140,8 +150,35 @@ public class MasterList
             System.out.print("|"+clac_string(List.get(i).getTrainerDetail()));
             System.out.print("|"+clac_string(Integer.toString(List.get(i).getMaxPartCount())));
             System.out.print("|"+clac_string(List.get(i).getTime()));
-            System.out.println("|"+clac_string(Integer.toString(List.get(i).getNumberOfPart())));
-            System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|--------------------|");
+            if(upcoming)
+            {
+                if(List.get(i).getNumberOfPart()!= 0)
+                {
+                    for(int j = 0; j < List.get(i).getNumberOfPart(); j++)
+                    {
+                        if(j==0)
+                        {
+                            String employ1 = List.get(i).getPartOfTraining().get(j).getEName() +"/"+List.get(i).getPartOfTraining().get(j).getDepartement();
+                            System.out.println("|"+clac_string(employ1)+"|");
+                        }
+                        else
+                        {
+                            String employx = List.get(i).getPartOfTraining().get(j).getEName() +"/"+List.get(i).getPartOfTraining().get(j).getDepartement();
+                            System.out.print("                            |                            |                            |                            |                            |                            ");
+                            System.out.println("|"+clac_string(employx)+"|");
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("|                            |");
+                }
+            }
+            else
+            {
+                System.out.println("|"+clac_string(Integer.toString(List.get(i).getNumberOfPart())));
+            }
+            System.out.println("----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|----------------------------|");
         }
     }
 }
